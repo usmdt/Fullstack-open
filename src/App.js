@@ -1,44 +1,70 @@
-import React, {useState} from 'react'
-import Note from './Components/Note'
+import React, { useState } from 'react'
+import Person from './Components/Person'
 
-const App = (props) => {
-    const [notes, setNotes] = useState(props.notes)
-    const [newNote, setNewNote] = useState(
-      '... new note'
-    )
+const App = () => {
+  const [ persons, setPersons ] = useState([
+    { name: 'Arto Hellas',
+      id: 1,
+      phone: '011112324' }
+  ]) 
+  const [ newName, setNewName ] = useState('')
+  const [ newPhone, setNewPhone ] = useState('')
 
-    const handleNoteChange = (event) => {
-      console.log(event.target.value)
-      setNewNote(event.target.value)
-    }
-    const addNote = (event) => {
-      event.preventDefault()
-        const noteObject = {
-          id: notes.length +1,
-          content: newNote,
-          date: new Date().toISOString(),
-          important: Math.random() < 0.5
-        }
-        setNotes(notes.concat(noteObject))
-        setNewNote('')
-    }
-
-    return (
-      <div>
-        <h1>Notes</h1>
-        <ul> 
-              {notes.map(note => 
-              <Note key={note.id} content={note.content}/>
-              )}
-        </ul>
-        <form onSubmit={addNote}>
-                <input value={newNote}
-                  onChange={handleNoteChange}>
-                </input>
-                <button type="submit"> save </button>
-        </form>
-      </div>
-    )
+  const handleNewPerson = (event) => {
+      setNewName(event.target.value)
   }
 
-export default App;
+  const handleNewPhone = (event) => {
+      setNewPhone(event.target.value)
+  }
+
+  const addNewPerson = (event) => {
+      event.preventDefault()
+      const tempPerson = {
+          name: newName,
+          id: persons.length+1,
+          phone: newPhone
+      }
+      if(persons.some(person => person.name === newName)){
+        window.alert(`${newName} already exists`)
+      }
+      else if(newName=== '' || newPhone=== '' ){
+        window.alert('name and phone number must be filled')
+        setNewName('')
+        setNewPhone('')
+      }
+      else{
+      setPersons(persons.concat(tempPerson))
+      setNewName('')
+      setNewPhone('')
+      }
+  }
+
+  return (
+    <div>
+      <h2>Phonebook</h2>
+      <form onSubmit={addNewPerson}>
+        <div>
+          name: 
+          <input value={newName}
+          onChange={handleNewPerson}/>
+        </div>
+        <div>
+          phone: 
+          <input value={newPhone}
+          onChange={handleNewPhone}/>
+        </div>
+        
+        <div>
+          <button type="submit">add</button>
+        </div>
+      </form>
+      <h2>Numbers</h2>
+      <ul>
+      {persons.map(person => <Person name={person.name} phone={person.phone}></Person>)}
+        </ul>
+    </div>
+  )
+}
+
+export default App
