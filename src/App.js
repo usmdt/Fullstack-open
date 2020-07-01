@@ -9,6 +9,12 @@ const App = () => {
   ]) 
   const [ newName, setNewName ] = useState('')
   const [ newPhone, setNewPhone ] = useState('')
+  const [ filter, setFilter ] = useState('')
+  const [ filteredNames, setFilteredNames ] = useState([
+    {
+      name: '',
+    }
+  ])
 
   const handleNewPerson = (event) => {
       setNewName(event.target.value)
@@ -16,6 +22,19 @@ const App = () => {
 
   const handleNewPhone = (event) => {
       setNewPhone(event.target.value)
+  }
+
+  const handleFilter = (event) => {
+      setFilter(event.target.value)
+      
+      if(persons.some(person => person.name.includes(filter))){
+        // setFilteredNames(persons.filter(person => person.name.startsWith(filter)))
+        const tempFilter = {
+          name: setFilteredNames(persons.filter(person => person.name.startsWith(filter)))
+        }
+        setFilteredNames(tempFilter)
+      }
+      console.log(setFilteredNames(persons.filter(person => person.name.startsWith(filter))))
   }
 
   const addNewPerson = (event) => {
@@ -28,7 +47,7 @@ const App = () => {
       if(persons.some(person => person.name === newName)){
         window.alert(`${newName} already exists`)
       }
-      else if(newName=== '' || newPhone=== '' ){
+      else if(newName === '' || newPhone === '' ){
         window.alert('name and phone number must be filled')
         setNewName('')
         setNewPhone('')
@@ -43,6 +62,15 @@ const App = () => {
   return (
     <div>
       <h2>Phonebook</h2>
+      <input value={filter}
+        onChange={handleFilter}
+      />
+      <div>
+        <ul>
+        {/* {filter.map(filt => <li)} */}
+        </ul>
+      </div>
+      <h2>Add new one</h2>
       <form onSubmit={addNewPerson}>
         <div>
           name: 
