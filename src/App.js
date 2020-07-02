@@ -1,98 +1,30 @@
-import React, { useState } from 'react'
-import Person from './Components/Person'
+import React, { useState } from "react"
+import Person from "./Components/Person"
+import Filter from "./Components/Filter"
+import PersonForm from "./Components/PersonForm"
 
 const App = () => {
-  const [ persons, setPersons ] = useState([
-    { name: 'Arto Hellas',
-      id: 1,
-      phone: '011112324' }
-  ]) 
-  const [ newName, setNewName ] = useState('')
-  const [ newPhone, setNewPhone ] = useState('')
-  const [ filter, setFilter ] = useState('')
-  const [ filteredNames, setFilteredNames ] = useState([
-    {
-      name: '',
-    }
-  ])
+	const [persons, setPersons] = useState([
+		{ name: "Arto Hellas", id: 1, number: "040-123456" },
+		{ name: "Ada Lovelace", id: 2, number: "39-44-5323523" },
+		{ name: "Dan Abramov", id: 3, number: "12-43-234345" },
+		{ name: "Mary Poppendieck", id: 4, number: "39-23-6423122" },
+	])
 
-  const handleNewPerson = (event) => {
-      setNewName(event.target.value)
-  }
+	const handlePersons = (value) => {
+		setPersons(value)
+	}
 
-  const handleNewPhone = (event) => {
-      setNewPhone(event.target.value)
-  }
-
-  const handleFilter = (event) => {
-      setFilter(event.target.value)
-      
-      if(persons.some(person => person.name.includes(filter))){
-        // setFilteredNames(persons.filter(person => person.name.startsWith(filter)))
-        const tempFilter = {
-          name: setFilteredNames(persons.filter(person => person.name.startsWith(filter)))
-        }
-        setFilteredNames(tempFilter)
-      }
-      console.log(setFilteredNames(persons.filter(person => person.name.startsWith(filter))))
-  }
-
-  const addNewPerson = (event) => {
-      event.preventDefault()
-      const tempPerson = {
-          name: newName,
-          id: persons.length+1,
-          phone: newPhone
-      }
-      if(persons.some(person => person.name === newName)){
-        window.alert(`${newName} already exists`)
-      }
-      else if(newName === '' || newPhone === '' ){
-        window.alert('name and phone number must be filled')
-        setNewName('')
-        setNewPhone('')
-      }
-      else{
-      setPersons(persons.concat(tempPerson))
-      setNewName('')
-      setNewPhone('')
-      }
-  }
-
-  return (
-    <div>
-      <h2>Phonebook</h2>
-      <input value={filter}
-        onChange={handleFilter}
-      />
-      <div>
-        <ul>
-        {/* {filter.map(filt => <li)} */}
-        </ul>
-      </div>
-      <h2>Add new one</h2>
-      <form onSubmit={addNewPerson}>
-        <div>
-          name: 
-          <input value={newName}
-          onChange={handleNewPerson}/>
-        </div>
-        <div>
-          phone: 
-          <input value={newPhone}
-          onChange={handleNewPhone}/>
-        </div>
-        
-        <div>
-          <button type="submit">add</button>
-        </div>
-      </form>
-      <h2>Numbers</h2>
-      <ul>
-      {persons.map(person => <Person name={person.name} phone={person.phone}></Person>)}
-        </ul>
-    </div>
-  )
+	return (
+		<div>
+			<h2>Phonebook</h2>
+			<Filter persons={persons} />
+			<h2>Add new one</h2>
+			<PersonForm persons={persons} onChange={handlePersons} />
+			<h2>Numbers</h2>
+			<Person persons={persons} />
+		</div>
+	)
 }
 
 export default App

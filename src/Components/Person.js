@@ -1,9 +1,15 @@
-import React from 'react'
+import React from "react"
 
 const Person = (props) => {
-    return (
-      <li>{props.name} {props.phone}</li>
-    )
-  }
+	return (
+		<ul>
+			{props.persons.map((person) => (
+				<li>
+					{person.name} {person.phone}
+				</li>
+			))}
+		</ul>
+	)
+}
 
-export default Person;
+export default Person
