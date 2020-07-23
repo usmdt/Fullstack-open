@@ -4,7 +4,7 @@ const Person = (props) => {
 	return (
 		<ul>
 			{props.persons.map((person) => (
-				<li>
+				<li key={person.name}>
 					{person.name} {person.phone}
 				</li>
 			))}
