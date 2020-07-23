@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react"
 import axios from "axios"
+import Country from "./Components/Country"
 
 const App = () => {
 	const [countries, setCountries] = useState([])
 	const [filteredCountries, setFilteredCountries] = useState([])
 
 	const handleSearch = (event) => {
-		console.log(event.target.value)
 		setFilteredCountries(
 			countries.filter((country) =>
 				country.name.toLowerCase().startsWith(event.target.value.toLowerCase())
@@ -26,11 +26,21 @@ const App = () => {
 		<div>
 			find countries
 			<input onChange={handleSearch}></input>
-			<ul>
-				{filteredCountries.map((country) => (
-					<li key={country.name}>{country.name}</li>
-				))}
-			</ul>
+			{filteredCountries.length === 1 ? (
+				<Country country={filteredCountries}></Country>
+			) : (
+				<div>
+					{filteredCountries.length < 10 ? (
+						<ul>
+							{filteredCountries.map((country) => (
+								<li key={country.name}>{country.name}</li>
+							))}
+						</ul>
+					) : (
+						<div> too many countries to display </div>
+					)}
+				</div>
+			)}
 		</div>
 	)
 }

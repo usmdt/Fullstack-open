@@ -7,19 +7,19 @@ const Filter = ({ persons }) => {
 
 	const handleFilter = (event) => {
 		setFilter(event.target.value)
-		console.log("bbd")
+
 		setFilteredNames(
 			persons.filter((person) =>
 				person.name.toLowerCase().startsWith(filter.toLowerCase())
 			)
 		)
-		// console.log(filteredNames.length)
-		// if (filteredNames.length >= 10) {
-		// 	setFilterLength(false)
-		// 	console.log(filterLength)
-		// } else {
-		// 	setFilterLength(true)
-		// }
+		console.log(filteredNames.length)
+		if (filteredNames.length >= 10) {
+			setFilterLength(false)
+			console.log(filterLength)
+		} else {
+			setFilterLength(true)
+		}
 	}
 	return (
 		<div>
