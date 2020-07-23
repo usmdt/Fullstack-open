@@ -3,19 +3,19 @@
     {
       "id": 1,
       "name": "Arto Hellas",
-      "number": "39-44-5323523",
+      "phone": "39-44-5323523",
       "important": true
     },
     {
       "id": 2,
       "name": "Ada Lovelace",
-      "number": "12-43-234345",
+      "phone": "12-43-234345",
       "important": false
     },
     {
       "id": 3,
       "name": "Dan Abramov",
-      "number": "39-23-6423122",
+      "phone": "39-23-6423122",
       "important": true
     }
   ]
