@@ -1,6 +1,7 @@
 import React, { useState } from "react"
+import phonebookService from "../Services/phonebook"
 
-const PersonForm = (props) => {
+const PersonForm = ({ persons, onChange }) => {
 	const [newName, setNewName] = useState("")
 	const [newPhone, setNewPhone] = useState("")
 	const handleNewPerson = (event) => {
@@ -14,18 +15,21 @@ const PersonForm = (props) => {
 	const addNewPerson = (event) => {
 		event.preventDefault()
 		const tempPerson = {
+			id: persons.length + 1,
 			name: newName,
-			id: props.persons.length + 1,
 			phone: newPhone,
 		}
-		if (props.persons.some((person) => person.name === newName)) {
+		if (persons.some((person) => person.name === newName)) {
 			window.alert(`${newName} already exists`)
 		} else if (newName === "" || newPhone === "") {
 			window.alert("name and phone number must be filled")
 			setNewName("")
 			setNewPhone("")
 		} else {
-			props.onChange(props.persons.concat(tempPerson))
+			phonebookService.create(tempPerson).then((response) => {
+				console.log(response)
+			})
+			onChange(persons.concat(tempPerson))
 			setNewName("")
 			setNewPhone("")
 		}
