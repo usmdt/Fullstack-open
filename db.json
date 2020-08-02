@@ -1,29 +1,9 @@
 {
   "phonebook": [
     {
-      "id": 1,
-      "name": "aseqse",
-      "phone": "123124"
-    },
-    {
-      "id": 2,
-      "name": "qeqweqwew",
-      "phone": "qwrqwrwqr1"
-    },
-    {
       "id": 3,
       "name": "qwrqrwqrqr",
       "phone": "wqrwqrqwrqw"
-    },
-    {
-      "id": 4,
-      "name": "qwrqwrqwrwqr",
-      "phone": "qwrqwrqwrrq"
-    },
-    {
-      "id": 5,
-      "name": "qwrqwrqrqrq",
-      "phone": "qwrqwrqrqw"
     },
     {
       "id": 6,
@@ -39,11 +19,6 @@
       "id": 8,
       "name": "qwrqwrqwrqwrq",
       "phone": "rqwrqwrwqrwqr"
-    },
-    {
-      "id": 9,
-      "name": "qwrqrqwrq",
-      "phone": "qwrwqrqwrqrqrq"
     },
     {
       "id": 10,
