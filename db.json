@@ -2,43 +2,18 @@
   "phonebook": [
     {
       "id": 3,
-      "name": "qwrqrwqrqr",
-      "phone": "wqrwqrqwrqw"
+      "name": "Rokas",
+      "phone": "1113"
     },
     {
-      "id": 6,
-      "name": "wqrqwrqwrqwr",
-      "phone": "qwrqwrwq"
+      "id": 4,
+      "name": "Diana",
+      "phone": "1214124"
     },
     {
-      "id": 7,
-      "name": "rqwrqwqrq",
-      "phone": "qrqwrwqrqwrw"
-    },
-    {
-      "id": 8,
-      "name": "qwrqwrqwrqwrq",
-      "phone": "rqwrqwrwqrwqr"
-    },
-    {
-      "id": 10,
-      "name": "qwrwqrq",
-      "phone": "qwrqwrqwrqr"
-    },
-    {
-      "id": 11,
-      "name": "qwrqwr",
-      "phone": "qqq"
-    },
-    {
-      "id": 12,
-      "name": "qqqrqwrqw",
-      "phone": "qwrqwr"
-    },
-    {
-      "id": 13,
-      "name": "qwrqrqw",
-      "phone": "qrwqrqwrw"
+      "id": 5,
+      "name": "Ugnius",
+      "phone": "124124"
     }
   ]
 }
